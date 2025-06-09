@@ -23,7 +23,10 @@
     
     <!--loading the modules-->
     <script>
-      require([ "esri/Map", "esri/views/MapView" ], (Map, MapView) => {
+      require([ "esriConfig", "esri/Map", "esri/views/MapView" ], (esriConfig, Map, MapView) => {
+    
+       //adding API
+        esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurPtGjTUF0iK_-VE-Gc2VRp_Su50V1pERHHdYQOegYlCDrdXEFkDg56iV-GTi3EEWTRkwwUv0l7hsihPafJySWj1OKFrQj-5BTYDN6OLPtwEKjCWE7fOdRRvETtK8wqUoJsDoD3oa6NHmPGaX3q5Z_1ow87oUn3Xpq6Bk6H_2gz2341YXLa_WIEELtC5wFMThji7f_kBhaix8tTaCZxSpEgc.AT1_mojWLwCx";
         const map = new Map({
           basemap: "satellite"
         });
