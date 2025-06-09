@@ -1,11 +1,10 @@
 <!DOCTYPE html>
- <html>
+<html>
   <head>
-    <!-- meta for browser first design-->
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>Data Collector for AGOL</title>
-    
+
     <style>
       html,
       body,
@@ -15,31 +14,32 @@
         height: 100%;
         width: 100%;
       }
-     </style>
-     
-    <!--import CSS and library-->
+    </style>
+
+    <!-- Import CSS and ArcGIS JS API -->
     <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.26/"></script>
-    
-    <!--loading the modules-->
+
+    <!-- Initialize Map -->
     <script>
-      require([ "esri/Config", "esri/Map", "esri/views/MapView" ], (esriConfig, Map, MapView) => {
-    
-       //adding API
+      require(["esri/config", "esri/Map", "esri/views/MapView"], function(esriConfig, Map, MapView) {
+        // Add API key
         esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurAbHgZa703qEbwt5TYXZ7ZCCPcmwUvAizKUSk-Qnx8wTShjyFBd7a9KYZgEqCIDwgNffy9AfwPHjeqdwmKuKyoJo9wYJPJxTA9XyOMNKSsZIcusrGXAFcy6wbSi3LkGVRZmXNgnvZc5wQnwPNNcwp2W7E2KnLafCubRmJekK3wSjKYDp1_f43SEwPxUX7Tf5YiQfIS94QLW7cBHawUyggHrGAYILs7jvM5TpaA931towAT1_ydGEG7as";
-        
+
         const map = new Map({
           basemap: "satellite"
         });
+
         const view = new MapView({
-          container: "viewDiv", // Reference to the DOM node that will contain the view
-          map: map // References the map object
+          container: "viewDiv",
+          map: map,
+          center: [-76.61, 39.28], // Optional: Centered near Baltimore
+          zoom: 14
         });
       });
     </script>
-
   </head>
   <body>
-   <div id="viewDiv"></div>
+    <div id="viewDiv"></div>
   </body>
 </html>
