@@ -55,7 +55,13 @@
           placeholder: "Search address or place",
           includeDefaultSources: true
         });
-
+        // Create featurelayer from feature service 
+        const layer = new FeatureLayer({ 
+        // URL to the service 
+          url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/0" //Your item URL Goes Here
+        });
+        //adding layer to the map
+        map.add(layer);
         view.ui.add(searchWidget, {
           position: "top-right",
           index: 0
