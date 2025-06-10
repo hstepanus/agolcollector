@@ -45,11 +45,12 @@
         "esri/Map",
         "esri/views/MapView",
         "esri/widgets/Locate",
-        "esri/widgets/Search" 
-      ], function(esriConfig, Map, MapView, Locate, Search) {
+        "esri/widgets/Search",
+        "esri/layers/FeatureLayer" 
+      ], function(esriConfig, Map, MapView, Locate, Search, FeatureLayer) {
 
-        // Add API key
-        esriConfig.apiKey = "AAPT85fOqywZsicJupSmVSCGri6_IyZ0sq8W-LVzxng7N02KkRSXFUU6ZDHd-bOyIxaHeqelZs-ToIkl1qRvjhxQEOKVc1CQ0fXk9kwdUxrHAx4ayX2tmA-6m-fPQI29sHHcVQFGfiyDd3883gJx0QGVNjlejlPwhBTPlE82YcEZIgO_9cZ3MPBAOpMmpWZN9o90yp_bZIYba_p55e30Kd4Im68ZxtuJj0wMyTiYGV5eHjKwTYuuqnHlcH7lMBUW9c7-AT2_ydGEG7as"; 
+        // API key
+        esriConfig.apiKey = "AAPT85fOqywZsicJupSmVSCGri6_IyZ0sq8W-LVzxng7N02KkRSXFUU6ZDHd-bOyIxaHeqelZs-ToIkl1qRvjhxQEOKVc1CQ0fXk9kwdUxrHAx4ayX2tmA-6m-fPQI29sHHcVQFGfiyDd3883gJx0QGVNjlejlPwhBTPlE82YcEZIgO_9cZ3MPBAOpMmpWZN9o90yp_bZIYba_p55e30Kd4Im68ZxtuJj0wMyTiYGV5eHjKwTYuuqnHlcH7lMBUW9c7-AT2_ydGEG7as";
 
         const map = new Map({
           basemap: "topo"
@@ -58,39 +59,30 @@
         const view = new MapView({
           container: "viewDiv",
           map: map,
-          center: [-76.61, 39.28], // Centered near Baltimore
+          center: [-76.61, 39.28],
           zoom: 14
         });
 
-        const locateBtn = new Locate({
-          view: view
-        });
+        const locateBtn = new Locate({ view: view });
         view.ui.add(locateBtn, "top-left");
 
-        // Add the Search widget (with default locator)
         const searchWidget = new Search({
           view: view,
           placeholder: "Search address or place",
           includeDefaultSources: true
         });
-        // Create featurelayer from feature service 
-        const layer = new FeatureLayer({ 
-        
-          // URL to the service 
+        view.ui.add(searchWidget, "top-right");
+
+        const layer = new FeatureLayer({
           url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/AGOL_Survey_results/FeatureServer"
         });
-          //adding layer to the map
-          map.add(layer);
-          
-          view.ui.add(searchWidget, {
-          position: "top-right",
-          index: 0
-        });
+        map.add(layer);
+
       });
     </script>
   </head>
   <body>
-    <a href="https://survey123.arcgis.com/share/55a1dcb95cfe435a8b16cebfd83afef4"target="_blank" class="addRecordBtn">Add Record</a>
+    <a href="https://survey123.arcgis.com/share/55a1dcb95cfe435a8b16cebfd83afef4" target="_blank" class="addRecordBtn">Add Record</a>
     <div id="viewDiv"></div>
   </body>
 </html>
