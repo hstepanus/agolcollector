@@ -57,12 +57,14 @@
         });
         // Create featurelayer from feature service 
         const layer = new FeatureLayer({ 
-        // URL to the service 
-          url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/0" //Your item URL Goes Here
+        
+          // URL to the service 
+          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/AGOL_Survey_results/FeatureServer"
         });
-        //adding layer to the map
-        map.add(layer);
-        view.ui.add(searchWidget, {
+          //adding layer to the map
+          map.add(layer);
+          
+          view.ui.add(searchWidget, {
           position: "top-right",
           index: 0
         });
